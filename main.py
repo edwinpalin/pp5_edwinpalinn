@@ -1,5 +1,5 @@
 """
-Edwin Palin
+Edwin Palin 
 22-0178
 Refinando código
 En este ejercicio, se refinará un código dado y se publicará en un repositorio de Github
@@ -7,27 +7,28 @@ En este ejercicio, se refinará un código dado y se publicará en un repositori
 
 
 def costs():
-  with open('gift_costs.txt') as f:
-    gift_costs = f.read().split('\n')
-  gift_costs = [int(c) for c in gift_costs]  # convierte strings a int
-  return gift_costs
+    """esto es una función que devuelve una lista de costos del archivo gift_costs.txt"""
+    with open('gift_costs.txt', 'r', encoding='UTF-8') as archivo:
+        gift_costs = list(archivo)
+    gift_costs = [int(c) for c in gift_costs]  # convierte strings a int
+    archivo.close()  # cerrar el archivo después de usarlo y no ser necesario
+    return gift_costs
 
 
 def total(gift_costs):
-  gift_costs = costs()
-  total_price = 0
-  for cost in gift_costs:
-    if cost > 1000:
-      total_price += cost * 1.16  # agrega impuestos
-    else:
-      total_price += cost  # los costos menores a 1000 no se le agrega impuesto
+    """esta es una función que suma los precios de la lista de costos para conseguir un total"""
+    total_price = 0
+    for cost in gift_costs:
+        if cost > 1000:
+            total_price += cost * 1.16  # se le agrega impuestos
+        else:
+            total_price += cost  # a todos los costos menores a 1000 no se le agrega impuesto
 
-  return total_price
+    return total_price
 
 
 def main():
-  print(total(costs()))
-  # llama a las dos funciones y luego imprime el resultado
-
+    """esta es una función principal que llama ambas funciones e imprime el total"""
+    print(total(costs()))
 
 main()
