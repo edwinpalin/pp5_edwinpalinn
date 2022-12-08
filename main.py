@@ -16,6 +16,7 @@ def costs():
     except ValueError:
       print('Los datos deben ser digitos.')
       sys.exit()
+      
   return gift_costs
 
 
